@@ -1,0 +1,31 @@
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.event.*;
+public class JTabbedPaneDemo extends JFrame{
+JLabel lbl,txt;
+JToggleButton jb;
+JTabbedPane jt;
+JTabbedPaneDemo() {
+setTitle("JTabbedPane");
+setDefaultCloseOperation(EXIT_ON_CLOSE);
+lbl = new JLabel("Label in Tab1");
+JPanel panel1 = new JPanel();
+panel1.add(lbl);
+JPanel panel2 = new JPanel();
+jb=new JToggleButton("Change Color");
+panel2.add(jb);
+jt=new JTabbedPane();
+jt.addTab("Tab 1", panel1);
+jt.addTab("Tab 2", panel2);
+jt.setToolTipTextAt(0,"Tab 1");
+jt.setToolTipTextAt(1,"Tab 2");
+add(jt,BorderLayout.NORTH);
+txt=new JLabel();
+add(txt,BorderLayout.CENTER);setSize(300,200); setVisible(true);
+jt.addChangeListener(new ChangeListener() {
+public void stateChanged(ChangeEvent e) {
+txt.setText("Tab selected: " + jt.getSelectedIndex());}});}
+public static void main(String args[]) {
+new JTabbedPaneDemo();
+}
+}
